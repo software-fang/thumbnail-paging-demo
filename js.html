@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>无标题文档</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .item-wrap {
+            width: 740px;
+            height: 120px;
+            border: 2px solid #000;
+            margin: 200px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-left {
+            position: absolute;
+            left: 300px;
+            top: 260px;
+            cursor: pointer;
+        }
+        
+        .btn-right {
+            position: absolute;
+            right: 300px;
+            top: 260px;
+            cursor: pointer;
+        }
+        
+        .btn-left:hover,
+        .btn-right:hover {
+            color: red;
+        }
+        
+        .item-wrap ul {
+            position: absolute;
+            left: 4px;
+        }
+        
+        .item-wrap ul li {
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: 1px solid blue;
+            margin: 10px;
+            list-style: none;
+        }
+        
+        .item-wrap ul li img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn-left"><<</div>
+    <div class="item-wrap">
+        <ul>
+            <li><img src="img/1.jpg"></li>
+            <li><img src="img/2.jpg"></li>
+            <li><img src="img/3.jpg"></li>
+            <li><img src="img/4.jpg"></li>
+            <li><img src="img/5.jpg"></li>
+            <li><img src="img/6.jpg"></li>
+            <li><img src="img/7.jpg"></li>
+            <li><img src="img/8.jpg"></li>
+            <li><img src="img/9.jpg"></li>
+            <li><img src="img/10.jpg"></li>
+            <li><img src="img/11.jpg"></li>
+            <li><img src="img/12.jpg"></li>
+            <li><img src="img/13.jpg"></li>
+            <li><img src="img/14.jpg"></li>
+        </ul>
+    </div>
+    <div class="btn-right">>></div>
+    <script>
+        var oBtnLeft = document.getElementsByClassName('btn-left')[0];
+        var oBtnRight = document.getElementsByClassName('btn-right')[0];
+        var oItemWrap = document.getElementsByClassName('item-wrap')[0];
+        var oUl = oItemWrap.getElementsByTagName('ul')[0];
+        var aLi = oUl.getElementsByTagName('li');
+
+        var num = Math.floor(aLi.length / 6);
+        
+        oBtnLeft.onclick = function (){
+            // alert(oUl.offsetWidth);
+            if (oUl.offsetWidth > 736*num ) {
+                return;
+            }
+            oUl.style.left = oUl.offsetLeft - 730 + 'px'; 
+        };
+
+        oBtnRight.onclick = function (){
+            if (oUl.offsetLeft >= 4) {
+                return;
+            }
+            oUl.style.left=oUl.offsetLeft + 730 + 'px';  // 726 = 600 + 12 + 110 + 4
+        };
+    </script>
+</body>
+
+</html>
